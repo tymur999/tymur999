@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blog
+  labels:
+    app: blog
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - tymur999.com
+  rules:
+    - host: tymur999.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog
+                port:
+                  name: http

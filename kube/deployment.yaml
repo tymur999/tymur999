@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: &meta
+  name: blog
+  labels: &labels
+    app: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels: *labels
+  template:
+    metadata: *meta
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: nginx
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+              name: http
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: html
+              readOnly: true
+            - mountPath: /etc/nginx/nginx.conf
+              name: nginx-conf
+              subPath: nginx.conf
+              readOnly: true
+      volumes:
+        - name: html
+          persistentVolumeClaim:
+            claimName: blog-html
+        - name: nginx-conf
+          configMap:
+            name: blog-nginx
+            items:
+              - key: nginx.conf
+                path: nginx.conf
