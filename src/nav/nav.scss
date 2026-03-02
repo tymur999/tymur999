@@ -1,0 +1,52 @@
+$padding: 15px;
+$menu: #282c34;
+
+.click:hover {
+  opacity: 90%;
+}
+
+.click:active {
+  opacity: 80%;
+}
+
+.menu-btn {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    font-size: 30px;
+  }
+}
+
+.name {
+  position: absolute;
+  font-weight: bold;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: white;
+}
+
+.header {
+  background-color: $menu;
+  padding: $padding;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  min-height: 3 * $padding;
+}
+
+.name {
+  align-self: center;
+  flex-grow: 1;
+  text-decoration: underline;
+}
+.wave {
+  position: absolute;
+  z-index: 999;
+  user-select: none;
+  pointer-events: none;
+  left: -10%;
+  width: 110%;
+}

@@ -1,0 +1,16 @@
+@import "./nav";
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: $menu;
+  z-index: 10;
+  color: white;
+  width: 25%;
+  height: 100vh;
+
+  div {
+    padding: $padding;
+  }
+}
