@@ -1,0 +1,16 @@
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  background: black;
+  color: white;
+}
+
+.welcome {
+  text-align: center;
+  top: 25%;
+  position: relative;
+}
