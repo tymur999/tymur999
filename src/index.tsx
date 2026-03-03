@@ -4,6 +4,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Canvas} from "./index/Canvas";
 import {Nav} from "./nav/Nav";
+import {RouterProvider} from "./router/RouterContext";
+import {Route} from "./router/Route";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,8 +13,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Nav/>
-    <Canvas/>
+    <RouterProvider>
+      <Nav/>
+      <Route path="/">
+        <Canvas/>
+      </Route>
+    </RouterProvider>
   </React.StrictMode>
 );
 

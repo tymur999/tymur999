@@ -5,6 +5,7 @@ import {Menu} from "./Menu";
 import wave from "../img/menu-wave.svg";
 import "./nav.scss";
 import {motion} from "framer-motion";
+import {Link} from "../router/Link";
 
 export function Nav() {
     const [active, setActive] = useState(false);
@@ -35,8 +36,8 @@ function MenuButton(props : { active: boolean, setActive: (_:boolean) => void })
 
 function Title() {
    return (
-     <a href="/" className="name click">
+     <Link href="/" className="name click">
        <motion.h1>Tymur Arsentiev</motion.h1>
-     </a>
+     </Link>
    );
 }
