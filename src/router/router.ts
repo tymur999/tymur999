@@ -1,10 +1,13 @@
 export type Router = {
-  replacePage: (path: string) => void;
-  pushPage: (path: string) => void;
-  current: HistoryState
+  replacePage: (path: Path) => void;
+  pushPage: (path: Path) => void;
+  current: Path
 }
 
 export type Path = `/${string}`;
-export type HistoryState = {
-  currentPage: Path
+
+export const DEFAULT : Router = {
+  current: window.location.pathname as Path,
+  pushPage: function(){},
+  replacePage: function(){}
 };

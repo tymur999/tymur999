@@ -6,7 +6,5 @@ export function Route(props: PropsWithChildren & {path: Path}) {
   const {path, children} = props;
   const router = useRouter();
 
-  return <>
-    { router.current?.currentPage === path && children}
-  </>
+  return router.current === path ? <>{children}</> : <></>
 }

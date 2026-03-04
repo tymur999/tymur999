@@ -1,62 +1,36 @@
-import {createContext, PropsWithChildren, useContext, useEffect, useSyncExternalStore} from "react";
-import {HistoryState, Path, Router} from "./router";
-import * as repl from "node:repl";
-
-const DEFAULT : Router = {
-  current: {
-    currentPage: window.location.pathname as Path
-  },
-  pushPage: function(){},
-  replacePage: function(){}
-};
+import {createContext, PropsWithChildren, useContext, useEffect, useState, useSyncExternalStore} from "react";
+import {DEFAULT, Path, Router} from "./router";
 
 const RouterContext = createContext<Router>(DEFAULT);
-
 export function useRouter() {
   return useContext(RouterContext);
 }
 
-function subscribe(onChange: () => void) {
-  window.addEventListener("popstate", onChange);
-
-  // return unsubscribe function
-  return function() {
-    window.removeEventListener("popstate", onChange);
-  }
-}
-
-function getSnapshot(): HistoryState {
-  return window.history.state ?? DEFAULT;
-}
-
-function pushState(path: string) {
-  window.history.pushState({
-      currentPage: path as Path
-    },
-    "",
-    path);
-}
-
-function replaceState(path: string) {
-  window.history.replaceState({
-      currentPage: path as Path
-    },
-    "",
-    path);
-}
 
 export function RouterProvider(props : PropsWithChildren) {
-  const state = useSyncExternalStore<HistoryState>(subscribe, getSnapshot);
+  // path is replaced on every state push/replace/pop
+  const [path, setPath] = useState<Path>(window.location.pathname as Path);
 
-  // start history with initial page
+  // handle the back/forward button
   useEffect(() => {
-    replaceState(window.location.pathname);
+    function subscribe(ev: PopStateEvent) {
+      setPath(ev.state as Path);
+    }
+
+    window.addEventListener("popstate", subscribe);
+    return () => window.removeEventListener("popstate", subscribe);
   }, []);
 
   return <RouterContext.Provider value={{
-    replacePage: replaceState,
-    pushPage: pushState,
-    current: state
+    pushPage: function(newPath: Path) {
+      window.history.pushState(newPath,"", newPath);
+      setPath(newPath as Path);
+    },
+    replacePage: function(newPath: Path) {
+        window.history.replaceState(newPath, "", newPath);
+        setPath(newPath as Path);
+    },
+    current: path
   }}>
     {props.children}
   </RouterContext.Provider>

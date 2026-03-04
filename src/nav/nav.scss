@@ -1,11 +1,11 @@
 $padding: 15px;
 $menu: #282c34;
 
-.click:hover {
+.menu-btn:hover {
   opacity: 90%;
 }
 
-.click:active {
+.menu-btn:active {
   opacity: 80%;
 }
 
@@ -25,7 +25,6 @@ $menu: #282c34;
   left: 50%;
   transform: translateX(-50%);
 
-  color: white;
 }
 
 .header {
@@ -40,7 +39,6 @@ $menu: #282c34;
 .name {
   align-self: center;
   flex-grow: 1;
-  text-decoration: underline;
 }
 .wave {
   position: absolute;

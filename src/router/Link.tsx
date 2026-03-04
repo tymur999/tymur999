@@ -1,7 +1,10 @@
+import "./link.scss";
+
 import React, {PropsWithChildren} from "react";
 import {useRouter} from "./RouterContext";
+import {Path} from "./router";
 
-export function Link(props: {className: string, href: string, replace?: boolean } & PropsWithChildren) {
+export function Link(props: {className: string, href: Path, replace?: boolean } & PropsWithChildren) {
   const {children, className, href, replace} = props;
   const router = useRouter();
 
@@ -14,5 +17,5 @@ export function Link(props: {className: string, href: string, replace?: boolean 
         }
    }
 
-  return <a onClick={onClick} href={href} className={className}>{children}</a>
+  return <a onClick={onClick} href={href} className={`${className} link click`}>{children}</a>
 }
