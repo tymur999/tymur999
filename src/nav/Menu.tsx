@@ -19,7 +19,7 @@ export function Menu({active} : {active: boolean}) {
   }, [active]);
 
   return (
-    <motion.section className="menu">
+    <motion.section initial={{left: hidden}} className="menu">
       {
         articles.map(title => <div>
           {title}
