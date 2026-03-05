@@ -6,15 +6,16 @@ import wave from "../img/menu-wave.svg";
 import "./nav.scss";
 import {motion} from "framer-motion";
 import {Link} from "../router/Link";
+import {Path} from "../router/router";
+import {Links} from "./Links";
 
 export default function Nav() {
     const [active, setActive] = useState(false);
 
     return <>
-        <nav className="header">
+        <nav>
           <MenuButton active={active} setActive={setActive}/>
-          <Title/>
-          <Link href="/about" className="nav-item">About</Link>
+          <Links/>
         </nav>
         <Menu active={active}/>
         <img className="wave" alt="wave" src={wave}/>
@@ -33,12 +34,4 @@ function MenuButton(props : { active: boolean, setActive: (_:boolean) => void })
           </button>
       </div>
     );
-}
-
-function Title() {
-   return (
-     <Link href="/" className="name">
-       <motion.h1>Tymur Arsentiev</motion.h1>
-     </Link>
-   );
 }
