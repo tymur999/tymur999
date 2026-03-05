@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
 import "webpack-dev-server";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -11,6 +12,10 @@ const isProduction = process.env.NODE_ENV === "production";
 const config: webpack.Configuration = {
   mode: isProduction ? "production" : "development",
   entry: "./src/index.tsx",
+  optimization: {
+    minimize: isProduction,
+    minimizer: [new TerserPlugin()]
+  },
   output: {
     path: path.resolve(import.meta.dirname, "build"),
     filename: "static/js/[name].[contenthash:8].js",

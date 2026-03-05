@@ -11,6 +11,12 @@ body {
   color: white;
 }
 
+// disable image dragging
+img {
+  user-select: none;
+  pointer-events: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

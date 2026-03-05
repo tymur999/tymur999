@@ -2,11 +2,8 @@ import React, {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
 import {Menu} from "./Menu";
-import wave from "../img/menu-wave.svg";
+import {ReactComponent as Wave} from "../img/menu-wave.svg";
 import "./nav.scss";
-import {motion} from "framer-motion";
-import {Link} from "../router/Link";
-import {Path} from "../router/router";
 import {Links} from "./Links";
 
 export default function Nav() {
@@ -18,7 +15,7 @@ export default function Nav() {
           <Links/>
         </nav>
         <Menu active={active}/>
-        <img className="wave" alt="wave" src={wave}/>
+        <Wave className="wave" />
     </>;
 }
 
