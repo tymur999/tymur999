@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Link} from "../router/Link";
 import {motion} from "framer-motion";
 
 export function Links() {
-  const [links, setLinks] = useState(["About", "Articles"]);
+  const [links] = useState(["About", "Articles"]);
 
   return <div className="links">
     { links.map(() => /* add spacers for flexbox */ <div/> )}

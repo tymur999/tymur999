@@ -2,7 +2,7 @@ import "./about.scss";
 import openingImage from "../img/IMG_20240725_175449_803.jpg";
 import rainbow from "../img/IMG-0186.jpg";
 import japanese from "../img/IMG_20230531_000224_01.jpg";
-import {PropsWithChildren} from "react";
+import type {PropsWithChildren} from "react";
 
 export default function AboutPage() {
   return <main className="about-page">

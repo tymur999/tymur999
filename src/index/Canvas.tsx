@@ -1,8 +1,7 @@
 import {motion} from "framer-motion";
 import "./canvas.scss";
 import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
-import React, {useMemo, useRef, useState} from "react";
-import {Mesh, Vector3} from "three";
+import {Vector3} from "three";
 import {Moon} from "./Moon";
 import {Stars} from "./Stars";
 

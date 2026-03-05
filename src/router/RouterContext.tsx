@@ -1,4 +1,4 @@
-import {createContext, PropsWithChildren, useContext, useEffect, useState, useSyncExternalStore} from "react";
+import {createContext, PropsWithChildren, useContext, useEffect, useState, } from "react";
 import {DEFAULT, Path, Router} from "./router";
 
 const RouterContext = createContext<Router>(DEFAULT);
