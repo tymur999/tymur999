@@ -41,10 +41,7 @@ $menu: #282c34;
   flex-grow: 1;
 }
 .wave {
-  position: absolute;
-  z-index: 999;
   user-select: none;
   pointer-events: none;
-  left: -10%;
-  width: 110%;
+  position: absolute;
 }

@@ -1,26 +1,44 @@
 import {motion} from "framer-motion";
 import "./canvas.scss";
 import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
-import {useMemo, useRef} from "react";
-import {Mesh} from "three";
+import React, {useMemo, useRef} from "react";
+import {Mesh, Vector3} from "three";
 import {Moon} from "./Moon";
 
+type Coordinate = [number, number, number];
 export default function Canvas() {
+
   return (
     <main>
-        <ThreeCanvas camera={{position: [5,5,5]}} shadows="basic">
+        <ThreeCanvas gl={{antialias: true, alpha: true}} >
           <Sphere/>
+          <Frame/>
           <Moon radius={8} color="pink" step={0.01}/>
           <Moon radius={6} color="grey" step={0.02}/>
           <Moon radius={4} color="green" step={0.03}/>
           <Stars/>
-          <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]}  />
+          <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
         </ThreeCanvas>
       <motion.h1 className="welcome" animate={{ rotate: 360 }}>
         Welcome to my blog
       </motion.h1>
     </main>
   )
+}
+
+function Frame() {
+  useFrame(state => {
+    const { x, y } = state.pointer
+
+    // Smoothly interpolate the camera position
+    // We multiply by a factor (e.g., 5) to increase the range of movement
+    state.camera.position.lerp(new Vector3(x * 10, y * 10, 5), 0.1)
+
+    // Always keep the camera looking at the center
+    state.camera.lookAt(0, 0, 0)
+  })
+
+  return <></>
 }
 
 function Sphere() {
@@ -42,7 +60,6 @@ function Sphere() {
 
 const RADIUS = 20;
 const COUNT = 100;
-type Coordinate = [number, number, number];
 function Stars() {
   const positions = useMemo(() => {
     const positions: Coordinate[] = [];
