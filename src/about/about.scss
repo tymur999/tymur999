@@ -1,6 +1,6 @@
-@import "../nav/nav.scss";
+@use "../nav/nav.scss";
 
-main {
+.about-page {
   color: white;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@ main {
 
 .title {
   text-align: center;
-  margin: $padding;
+  margin: nav.$padding;
 }
 
 .self {
@@ -17,7 +17,7 @@ main {
 }
 
 .about-container {
-  margin-top: 2 * $padding;
+  margin-top: 2 * nav.$padding;
   flex-shrink: 1;
   max-width: 75%;
   display: flex;
@@ -30,7 +30,7 @@ main {
   }
 
   p {
-    text-indent: 2 * $padding;
+    text-indent: 2 * nav.$padding;
     margin: 10px;
     max-width: 600px;
     line-height: 40px;

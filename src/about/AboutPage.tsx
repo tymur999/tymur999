@@ -5,10 +5,8 @@ import japanese from "../img/IMG_20230531_000224_01.jpg";
 import {PropsWithChildren} from "react";
 
 export default function AboutPage() {
-  return <main>
-    <div className="edge">
-
-    </div>
+  return <main className="about-page">
+    <div className="edge"/>
     <section className="about-container">
       <img src={openingImage} alt="Tymur Arsentiev" className="self"/>
       <h1 className="title">Welcome to my blog and personal website!</h1>
@@ -16,7 +14,7 @@ export default function AboutPage() {
         For the longest time, I never had a personal website to show my skills.
         I'm a longtime coder, project after project, but have never considered making a place to share my thoughts.
         After a while, I was inspired by my <ExternalLink href="https://medium.com/@tymur.arsent">Medium</ExternalLink> and
-        &nbsp;<ExternalLink  href="https://substack.com/@timsnodocmartins">Substack</ExternalLink> account to begin journaling my thoughts on my own.
+        &nbsp;<ExternalLink href="https://substack.com/@timsnodocmartins">Substack</ExternalLink> account to begin journaling my thoughts on my own.
       </p>
       <p>
         I like to take pride in my uniqueness as a web developer.
@@ -38,9 +36,7 @@ export default function AboutPage() {
         My favorite thing about Ebay is that they have almost every clothing brand, typically at reduced prices due to use.
       </p>
     </section>
-    <div className="edge">
-
-    </div>
+    <div className="edge"/>
   </main>
 }
 

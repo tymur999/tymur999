@@ -9,7 +9,7 @@ import {Stars} from "./Stars";
 export default function Canvas() {
 
   return (
-    <main>
+    <main className="canvas">
         <ThreeCanvas gl={{antialias: true, alpha: true}} >
           <Sphere/>
           <Moon radius={8} color="pink" step={0.01}/>
