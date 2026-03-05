@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import {RouterProvider} from "./router/RouterContext";
 import {Route} from "./router/Route";
+import "@fontsource/inter"; // Defaults to weight 400
+import "@fontsource/inter/400.css"; // Specify weight
+import "@fontsource/inter/400-italic.css"; // Specify weight and style
+import "@fontsource/neuton"; // Defaults to weight 400
+import "@fontsource/neuton/400.css"; // Specify weight
+import "@fontsource/neuton/400-italic.css"; // Specify weight and style
 
 const Canvas = React.lazy(() => import("./index/Canvas"));
 const About = React.lazy(() => import("./about/AboutPage"));

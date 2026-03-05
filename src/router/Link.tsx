@@ -9,7 +9,7 @@ export function Link(props: {className?: string, href: Path, replace?: boolean }
   const router = useRouter();
 
    function onClick(event: React.MouseEvent) {
-        event.preventDefault();
+//        event.preventDefault();
         if(replace) {
           router.replacePage(props.href);
         } else {
