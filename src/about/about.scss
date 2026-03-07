@@ -1,4 +1,6 @@
 @use "../nav/nav.scss";
+$paragraph: 20px;
+$max-width: 600px;
 
 .about-page {
   color: white;
@@ -24,24 +26,28 @@
   flex-direction: column;
   align-items: center;
   font-family: Neuton;
+  line-height: 40px;
 
   img:not(.self) {
     border: 2px white solid;
   }
 
   p {
-    text-indent: 2 * nav.$padding;
+    text-indent: 30px;
     margin: 10px;
-    max-width: 600px;
-    line-height: 40px;
-    font-size: 20px;
+    max-width: $max-width;
+    font-size: $paragraph;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: $paragraph * 2;
   }
   h2 {
-    font-size: 30px;
+    font-size: $paragraph * 1.5;
+  }
+  h3 {
+    font-size: $paragraph * 1.1;
+    font-weight: bold;
   }
 }
 
@@ -50,7 +56,7 @@
   flex-grow: 1;
 }
 
-.clothing {
+.clothing, .computers {
   margin: 15px 0;
   display: flex;
   flex-direction: row;
@@ -61,6 +67,27 @@
   width: 33%;
 }
 
+.computers {
+  // select second
+  img:not(:first-child) {
+    width: 20%;
+  }
+
+  img {
+    width: 30%;
+  }
+}
+
+
+
 .external-link {
   text-decoration: underline !important;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  font-size: $paragraph;
+  max-width: $max-width;
+  gap: 10px;
 }

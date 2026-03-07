@@ -5,6 +5,20 @@ declare namespace NodeJS {
   }
 }
 
+declare module '*.mdx' {
+  import {MDXProps} from "mdx/types";
+
+  let MDXComponent: (props: MDXProps) => JSX.Element;
+  export default MDXComponent;
+}
+
+declare module '*.md' {
+  import {MDXProps} from "mdx/types";
+
+  let MDXComponent: (props: MDXProps) => JSX.Element;
+  export default MDXComponent;
+}
+
 declare module '*.avif' {
   const src: string;
   export default src;

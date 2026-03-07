@@ -4,7 +4,9 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import {WebpackManifestPlugin} from "webpack-manifest-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import {Options} from '@mdx-js/loader';
 import "webpack-dev-server";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -34,7 +36,7 @@ const config: webpack.Configuration = {
         oneOf: [
           // Image assets
           {
-            test: [/\.avif$/, /\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, '/\.pdf$/'],
+            test: [/\.(avif|bmp|.gif|jpe?g|png|pdf)$/],
             type: "asset",
             parser: {
               dataUrlCondition: {
@@ -82,9 +84,34 @@ const config: webpack.Configuration = {
               ],
               plugins: [
                 !isProduction && "react-refresh/babel",
-              ].filter(Boolean),
+              ],
               cacheDirectory: true,
             },
+          },
+          { // mdx.js integration
+            test: /\.mdx?$/,
+            include: path.resolve(import.meta.dirname, "src"),
+            use: [
+              {
+                loader: "babel-loader",
+                options: {
+                  presets: [
+                    "@babel/preset-env",
+                    ["@babel/preset-react", { runtime: "automatic" }],
+                    "@babel/preset-typescript",
+                  ],
+                  plugins: [
+                    !isProduction && "react-refresh/babel",
+                  ],
+                  cacheDirectory: true,
+                }
+              }, {
+                loader: "@mdx-js/loader",
+                options: <Options> {
+
+                }
+              }
+            ],
           },
           // CSS Loader
           {
@@ -114,20 +141,22 @@ const config: webpack.Configuration = {
       template: path.resolve(import.meta.dirname, "public/index.html"),
       inject: true,
     }),
+    new WebpackManifestPlugin({
+      fileName: "manifest.json",
+      publicPath: "/"
+    }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),
     }),
     new ForkTsCheckerWebpackPlugin({
       async: !isProduction,
     }),
-    isProduction
-    && new MiniCssExtractPlugin({
+    isProduction && new MiniCssExtractPlugin({
         filename: "static/css/[name].[contenthash:8].css",
         chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
     }),
-    !isProduction
-    && new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean),
+    !isProduction && new ReactRefreshWebpackPlugin(),
+  ],
   devServer: {
     historyApiFallback: true,
     port: 3000,
