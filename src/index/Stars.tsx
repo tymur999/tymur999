@@ -25,7 +25,7 @@ export function Stars() {
     return positions;
   }, []);
 
-  return positions.map(coord => <mesh position={coord}>
+  return positions.map((coord, i) => <mesh key={i} position={coord}>
       <sphereGeometry args={[.1]} />
       <meshBasicMaterial />
     </mesh>

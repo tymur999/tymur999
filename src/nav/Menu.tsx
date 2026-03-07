@@ -21,7 +21,7 @@ export function Menu({active} : {active: boolean}) {
   return (
     <motion.section initial={{left: hidden}} className="menu">
       {
-        articles.map(title => <div>
+        articles.map(title => <div key={title}>
           {title}
         </div>)
       }
