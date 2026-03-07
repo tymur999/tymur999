@@ -6,7 +6,7 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {WebpackManifestPlugin} from "webpack-manifest-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import {Options} from '@mdx-js/loader';
+import {Options as MDXOptions} from '@mdx-js/loader';
 import "webpack-dev-server";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -107,8 +107,9 @@ const config: webpack.Configuration = {
                 }
               }, {
                 loader: "@mdx-js/loader",
-                options: <Options> {
-
+                options: <MDXOptions> {
+                  outputFormat: "program",
+                  providerImportSource: "@mdx-js/react",
                 }
               }
             ],
