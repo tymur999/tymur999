@@ -1,5 +1,7 @@
 import "./about.scss";
-import {lazy, PropsWithChildren} from "react";
+import {HTMLProps, lazy} from "react";
+import {Link} from "../router/Link";
+import {Path} from "../router/router";
 
 const About = lazy(() => import("./About.mdx"));
 
@@ -15,8 +17,8 @@ export default function AboutPage() {
   </main>
 }
 
-function ExternalLink(props: PropsWithChildren & { href: string }) {
+function ExternalLink(props: HTMLProps<HTMLAnchorElement>) {
   return (
-    <a href={props.href} className="link external-link" target="_blank">{props.children}</a>
+    <Link {...props} href={props.href as Path} className="external-link" target="_blank">{props.children}</Link>
   )
 }

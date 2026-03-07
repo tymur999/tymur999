@@ -19,49 +19,71 @@ declare module '*.md' {
   export default MDXComponent;
 }
 
+declare module '*.pdf' {
+  import {Path} from "./router/router";
+
+  const src: Path;
+  export default src;
+}
+
 declare module '*.avif' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.bmp' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.gif' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.jpg' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.jpeg' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.png' {
-  const src: string;
+  import {Path} from "./router/router";
+
+  const src: Path;
   export default src;
 }
 
 declare module '*.webp' {
-    const src: string;
-    export default src;
+  import {Path} from "./router/router";
+
+  const src: Path;
+  export default src;
 }
 
 declare module '*.svg' {
+  import {Path} from "./router/router";
   import * as React from 'react';
 
   export const ReactComponent: React.FunctionComponent<React.SVGProps<
     SVGSVGElement
   > & { title?: string }>;
 
-  const src: string;
+  const src: Path;
   export default src;
 }
 

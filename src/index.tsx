@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import {RouterProvider} from "./router/RouterContext";
-import {Route} from "./router/Route";
 import "@fontsource/inter"; // Defaults to weight 400
-import "@fontsource/neuton"; // Defaults to weight 400
+import "@fontsource/neuton";
+import {Routes} from "./router/Route";
 
-const Canvas = React.lazy(() => import("./index/Canvas"));
-const About = React.lazy(() => import("./about/AboutPage"));
 const Nav = React.lazy(() => import("./nav/Nav"));
 
 const root = ReactDOM.createRoot(
@@ -18,15 +16,7 @@ root.render(
   <React.StrictMode>
     <RouterProvider>
       <Nav/>
-      <Route path="/">
-        <Canvas/>
-      </Route>
-      <Route path="/about">
-        <About/>
-      </Route>
-      <Route path="/articles">
-        <div>Test</div>
-      </Route>
+      <Routes/>
     </RouterProvider>
   </React.StrictMode>
 );
