@@ -84,7 +84,7 @@ const config: webpack.Configuration = {
               ],
               plugins: [
                 !isProduction && "react-refresh/babel",
-              ],
+              ].filter(Boolean),
               cacheDirectory: true,
             },
           },
@@ -102,7 +102,7 @@ const config: webpack.Configuration = {
                   ],
                   plugins: [
                     !isProduction && "react-refresh/babel",
-                  ],
+                  ].filter(Boolean),
                   cacheDirectory: true,
                 }
               }, {
@@ -156,7 +156,7 @@ const config: webpack.Configuration = {
         chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
     }),
     !isProduction && new ReactRefreshWebpackPlugin(),
-  ],
+  ].filter(Boolean),
   devServer: {
     historyApiFallback: true,
     port: 3000,
