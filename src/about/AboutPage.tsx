@@ -1,6 +1,7 @@
 import "./about.scss";
-import {PropsWithChildren} from "react";
-import About from "./About.mdx";
+import {lazy, PropsWithChildren} from "react";
+
+const About = lazy(() => import("./About.mdx"));
 
 export default function AboutPage() {
   return <main className="about-page">
