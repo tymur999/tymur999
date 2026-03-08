@@ -1,0 +1,82 @@
+@use "../nav/nav"
+$paragraph: 20px
+$max-width: 600px
+$min-width: 400px
+
+.about-page
+  color: white
+  display: flex
+  justify-content: center
+
+.title
+  text-align: center
+  margin: nav.$padding
+
+.self
+  width: 100%
+  border-bottom: white 4px solid
+
+
+.about-container
+  min-width: $min-width
+  flex-shrink: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+  font-family: Neuton, serif
+  line-height: 40px
+
+  img:not(.self)
+    border: 2px white solid
+
+  p
+    text-indent: 30px
+    padding: nav.$padding
+    max-width: $max-width
+    font-size: $paragraph
+
+  h1
+    font-size: $paragraph * 2
+    padding: nav.$padding
+
+  h2
+    font-size: $paragraph * 1.5
+    padding: nav.$padding
+
+  h3
+    font-size: $paragraph * 1.1
+    font-weight: bold
+
+.edge
+  background: #27213C
+  flex-grow: 1
+  min-width: 30%
+
+.clothing, .computers
+  margin: 15px 0
+  display: flex
+  flex-direction: row
+  justify-content: center
+
+
+.clothing>img
+  width: 33%
+
+
+.computers
+  // select second
+  img:not(:first-child)
+    width: 20%
+
+  img
+    width: 30%
+
+.external-link
+  text-decoration: underline !important
+
+ul
+  display: flex
+  flex-direction: column
+  font-size: $paragraph
+  max-width: $max-width
+  gap: 10px

@@ -1,4 +1,4 @@
-import "./link.scss";
+import "./link.sass";
 
 import React, {HTMLProps, ReactNode} from "react";
 import {useRouter} from "./RouterContext";
@@ -7,7 +7,7 @@ import {Path} from "./router";
 export function Link(props: {href: Path, children : ReactNode, target?: '_blank' } & HTMLProps<HTMLAnchorElement>) {
   let {children, className, href} = props;
   const router = useRouter();
-  className = `${className} link`;
+  className = `${className ?? ""} link`.trim();
 
    function onClick(event: React.MouseEvent) {
      // perform the default action if _blank

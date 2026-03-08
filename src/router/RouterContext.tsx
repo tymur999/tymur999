@@ -22,11 +22,11 @@ export function RouterProvider(props : PropsWithChildren) {
   }, []);
 
   return <RouterContext.Provider value={{
-    pushPage: function(newPath: Path) {
+    pushPage(newPath: Path) {
       window.history.pushState(newPath,"", newPath);
       setPath(newPath as Path);
     },
-    replacePage: function(newPath: Path) {
+   replacePage(newPath: Path) {
         window.history.replaceState(newPath, "", newPath);
         setPath(newPath as Path);
     },

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+import './index.sass';
 import {RouterProvider} from "./router/RouterContext";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/neuton";

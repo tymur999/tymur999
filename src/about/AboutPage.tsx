@@ -1,4 +1,4 @@
-import "./about.scss";
+import "./about.sass";
 import {HTMLProps, lazy} from "react";
 import {Link} from "../router/Link";
 import {Path} from "../router/router";

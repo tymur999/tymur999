@@ -1,5 +1,5 @@
+import "./canvas.sass";
 import {motion} from "framer-motion";
-import "./canvas.scss";
 import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
 import {Vector3} from "three";
 import {Moon} from "./Moon";
@@ -9,7 +9,8 @@ export default function Canvas() {
 
   return (
     <main className="canvas">
-        <ThreeCanvas gl={{antialias: true, alpha: true}} >
+      <section className="canvas-ctr">
+        <ThreeCanvas shadows>
           <Sphere/>
           <Moon radius={8} color="pink" step={0.01}/>
           <Moon radius={6} color="grey" step={0.02}/>
@@ -17,9 +18,10 @@ export default function Canvas() {
           <Stars/>
           <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
         </ThreeCanvas>
-      <motion.h2 className="welcome" animate={{ rotate: 360 }}>
+      </section>
+      <motion.h1 className="welcome" animate={{ rotate: 360 }}>
         Welcome to my blog
-      </motion.h2>
+      </motion.h1>
     </main>
   )
 }

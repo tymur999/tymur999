@@ -1,5 +1,5 @@
-import "./menu.scss";
-import {motion, animate} from "framer-motion";
+import "./menu.sass";
+import {animate, motion} from "framer-motion";
 import {useEffect} from "react";
 
 const articles = [
