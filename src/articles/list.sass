@@ -7,7 +7,6 @@ $entry-width: 400px
   min-height: 100vh
 
   button
-    z-index: 999
     display: flex
     flex-direction: column
     max-width: $entry-width
@@ -53,3 +52,19 @@ $entry-width: 400px
   flex-direction: column
   align-items: center
   flex-wrap: wrap
+
+.reader
+  &, > section
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+  width: 100vw
+  height: 100vh
+  background: rgba(0,0,0,0.5)
+  > section
+    background: white
+    color: black
+    width: 75vw
+    height: 75vh

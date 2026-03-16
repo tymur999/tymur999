@@ -1,6 +1,7 @@
 import {Path} from "../router/router";
 import {MDXContent} from "mdx/types";
-import type {LazyExoticComponent} from "react";
+import {lazy, LazyExoticComponent} from "react";
+import allBlack from "../img/IMG_3095.jpg";
 
 export interface Article {
   name: string,
@@ -11,3 +12,13 @@ export interface Article {
   // lazy load article content
   article: MDXContent | LazyExoticComponent<MDXContent>
 }
+
+export const ARTICLES: Article[] = [
+  {
+    name: "My high school experience",
+    description: "My first program, winning two senior superlatives, and why (and how) I chose Georgia Tech",
+    thumbnail: allBlack,
+    published: new Date(Date.parse("3/15/2026")),
+    article: lazy(() => import("./mdx/high-school.mdx"))
+  }
+];

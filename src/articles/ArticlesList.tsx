@@ -1,17 +1,9 @@
-import {Article} from "./articles";
-import allBlack from "../img/IMG_3095.jpg";
-import {lazy, useState} from "react";
+import {Article, ARTICLES} from "./articles";
+import {useState} from "react";
 import "./list.sass";
 import {ReactComponent as BoxSvg} from "../img/blog-box.svg";
 import {Reader} from "./Reader";
 
-const ARTICLES: Article[] = [{
-  name: "My high school experience",
-  description: "My first program, winning two senior superlatives, and why (and how) I chose Georgia Tech",
-  thumbnail: allBlack,
-  published: new Date(),
-  article: lazy(() => import("../about/About.mdx"))
-}];
 
 export function ArticlesList() {
   const [reading, setReading] = useState<Article | null>(null);
@@ -21,14 +13,12 @@ export function ArticlesList() {
     <section className="articles">
       {
         ARTICLES.map(a =>
-          <BlogBox article={a} setReading={setReading}/>
+          <BlogBox key={a.name} article={a} setReading={setReading}/>
         )
-      }
-      {
-        reading && <Reader {...reading}/>
       }
     </section>
     <section className="spacer"/>
+    <Reader post={reading} setPost={setReading} />
   </main>
 }
 
