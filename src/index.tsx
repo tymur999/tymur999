@@ -5,6 +5,7 @@ import {RouterProvider} from "./router/RouterContext";
 import "@fontsource/inter"; // Defaults to weight 400
 import "@fontsource/neuton";
 import {Routes} from "./router/Route";
+import ArticleProvider from "./articles/ArticleContext";
 
 const Nav = React.lazy(() => import("./nav/Nav"));
 
@@ -15,8 +16,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RouterProvider>
-      <Nav/>
-      <Routes/>
+      <ArticleProvider>
+        <Nav/>
+        <Routes/>
+      </ArticleProvider>
     </RouterProvider>
   </React.StrictMode>
 );

@@ -54,17 +54,21 @@ $entry-width: 400px
   flex-wrap: wrap
 
 .reader
+  font-family: Neuton, serif
+  border: 2px solid black
   &, > section
-    position: absolute
+    position: fixed
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
 
+  z-index: 9999
   width: 100vw
-  height: 100vh
+  min-height: 100vh
   background: rgba(0,0,0,0.5)
   > section
+    margin-top: nav.$padding
     background: white
     color: black
-    width: 75vw
-    height: 75vh
+    width: 50vw
+    min-height: 75vh

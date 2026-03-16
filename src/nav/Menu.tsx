@@ -1,15 +1,13 @@
 import "./menu.sass";
 import {animate, motion} from "framer-motion";
 import {useEffect} from "react";
+import {ARTICLES, useArticle} from "../articles/ArticleContext";
 
-const articles = [
-  "Test 123",
-  "Hello",
-  "Title of Album"
-];
+
 const hidden = -999;
 
 export function Menu({active} : {active: boolean}) {
+  const [, setReading] = useArticle();
   useEffect(() => {
     if(active) {
       animate(".menu", {left : 0})
@@ -20,11 +18,18 @@ export function Menu({active} : {active: boolean}) {
 
   return (
     <motion.section initial={{left: hidden}} className="menu">
-      {
-        articles.map(title => <div key={title}>
-          {title}
-        </div>)
-      }
+      <ul>
+        {
+          ARTICLES.map((article) =>
+            <li key={article.name}>
+              <button className="link" onClick={() => setReading(article)} >
+                {article.name}
+              </button>
+            </li>
+          )
+        }
+      </ul>
+
     </motion.section>
   )
 }

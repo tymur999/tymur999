@@ -1,6 +1,6 @@
-import {Article} from "./articles";
+import {useArticle} from "./ArticleContext";
 import {motion} from "framer-motion";
-import {useAnimate} from "motion/react";
+import {useAnimate, animate as animateClass} from "motion/react";
 import {TargetAndTransition} from "motion";
 import {useEffect} from "react";
 
@@ -9,21 +9,39 @@ const READER : Record<Transition, TargetAndTransition> = {
   closed : { opacity: 0 },
   open : { opacity: 1 }
 };
+const ARTICLE : Record<Transition, TargetAndTransition> = {
+  closed : { top: "-100%" },
+  open : { top: "50%" }
+};
 
-type Props = { post: Article | null, setPost: (_: Article | null) => void };
-export function Reader({ post, setPost }: Props) {
-  const [ scope, animate ]= useAnimate<HTMLElement>();
+
+export function Reader() {
+  const [ scope, animate ] = useAnimate<HTMLElement>();
+  const [post, setPost] = useArticle();
 
   useEffect(() => {
     if(post && scope.current) {
       animate(scope.current, READER.open);
+      animateClass(".read-box", ARTICLE.open);
     }
   }, [post, scope]);
 
+  useEffect(() => {
+    function pressEscape(e: KeyboardEvent) {
+      e.key === "Escape" && handleClose();
+    }
+
+    document.addEventListener("keydown", pressEscape);
+    return () => document.removeEventListener("keydown", pressEscape);
+  }, []);
+
   function handleClose() {
-    animate(scope.current, READER.closed)
-      .then(() => setPost(null));
+    Promise.all([
+      animate(scope.current, READER.closed),
+      animateClass(".read-box", ARTICLE.closed)
+    ]).then(() => setPost(undefined));
   }
+
 
   return post ? (
     <motion.article
@@ -33,9 +51,9 @@ export function Reader({ post, setPost }: Props) {
       animate={READER.open}
       onClick={handleClose}
       className="reader link">
-        <section onClick={e => e.stopPropagation()}>
+        <motion.section className="read-box" initial={{top: "-100%"}} animate={{top: "50%"}} onClick={e => e.stopPropagation()}>
           <post.article/>
-        </section>
+        </motion.section>
     </motion.article>
   ) : <></>;
 }

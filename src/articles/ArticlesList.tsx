@@ -1,31 +1,28 @@
-import {Article, ARTICLES} from "./articles";
-import {useState} from "react";
+import {Article, ARTICLES, useArticle} from "./ArticleContext";
 import "./list.sass";
 import {ReactComponent as BoxSvg} from "../img/blog-box.svg";
 import {Reader} from "./Reader";
 
 
 export function ArticlesList() {
-  const [reading, setReading] = useState<Article | null>(null);
-
   return <main className="art-ctr">
     <section className="spacer"/>
     <section className="articles">
       {
         ARTICLES.map(a =>
-          <BlogBox key={a.name} article={a} setReading={setReading}/>
+          <BlogBox key={a.name} article={a}/>
         )
       }
     </section>
     <section className="spacer"/>
-    <Reader post={reading} setPost={setReading} />
+    <Reader/>
   </main>
 }
 
-function BlogBox(props: { article: Article, setReading: (_: Article) => void}) {
-  const {article,
-    article: {name, description, thumbnail, published},
-    setReading} = props;
+function BlogBox(props: { article: Article }) {
+  const {article, article: {name, description, thumbnail, published} } = props;
+
+  const [, setReading] = useArticle();
 
   return (
     <button className="link" onClick={() => setReading(article)}>

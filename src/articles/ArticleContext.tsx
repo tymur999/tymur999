@@ -1,7 +1,8 @@
+import {createContext, lazy, LazyExoticComponent, PropsWithChildren, useContext, useState} from "react";
 import {Path} from "../router/router";
 import {MDXContent} from "mdx/types";
-import {lazy, LazyExoticComponent} from "react";
 import allBlack from "../img/IMG_3095.jpg";
+import {Reader} from "./Reader";
 
 export interface Article {
   name: string,
@@ -21,4 +22,19 @@ export const ARTICLES: Article[] = [
     published: new Date(Date.parse("3/15/2026")),
     article: lazy(() => import("./mdx/high-school.mdx"))
   }
-];
+]
+
+const articleContext =
+  createContext<ReturnType<typeof useState<Article | undefined>>>([undefined, function(){}]);
+
+export function useArticle() {
+  return useContext(articleContext);
+}
+
+export default function ArticleProvider({ children }: PropsWithChildren) {
+  const state = useState<Article | undefined>(undefined);
+  return <articleContext.Provider value={state}>
+    <Reader/>
+    {children}
+  </articleContext.Provider>;
+}
