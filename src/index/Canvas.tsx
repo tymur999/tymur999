@@ -4,6 +4,7 @@ import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
 import {Vector3} from "three";
 import {Moon} from "./Moon";
 import {Stars} from "./Stars";
+import {AnimateSpin} from "../animations";
 
 export default function Canvas() {
 
@@ -19,7 +20,7 @@ export default function Canvas() {
           <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
         </ThreeCanvas>
       </section>
-      <motion.h1 className="welcome" animate={{ rotate: 360 }}>
+      <motion.h1 className="welcome" animate={AnimateSpin().animate}>
         Welcome to my blog
       </motion.h1>
     </main>

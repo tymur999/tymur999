@@ -1,18 +1,11 @@
 import {useArticle} from "./ArticleContext";
 import {motion} from "framer-motion";
 import {useAnimate, animate as animateClass} from "motion/react";
-import {TargetAndTransition} from "motion";
 import {useEffect} from "react";
+import {AnimateDirection, AnimateFade, AnimateTemplate} from "../animations";
 
-type Transition = "open" | "closed";
-const READER : Record<Transition, TargetAndTransition> = {
-  closed : { opacity: 0 },
-  open : { opacity: 1 }
-};
-const ARTICLE : Record<Transition, TargetAndTransition> = {
-  closed : { top: "-100%" },
-  open : { top: "50%" }
-};
+const READER : AnimateTemplate = AnimateFade();
+const ARTICLE : AnimateTemplate = AnimateDirection("top", "50%");
 
 
 export function Reader() {
@@ -21,8 +14,8 @@ export function Reader() {
 
   useEffect(() => {
     if(post && scope.current) {
-      animate(scope.current, READER.open);
-      animateClass(".read-box", ARTICLE.open);
+      animate(scope.current, READER.animate);
+      animateClass(".read-box", ARTICLE.animate!);
     }
   }, [post, scope]);
 
@@ -37,8 +30,8 @@ export function Reader() {
 
   function handleClose() {
     Promise.all([
-      animate(scope.current, READER.closed),
-      animateClass(".read-box", ARTICLE.closed)
+      animate(scope.current, READER.initial),
+      animateClass(".read-box", ARTICLE.initial!)
     ]).then(() => setPost(undefined));
   }
 
@@ -47,11 +40,11 @@ export function Reader() {
     <motion.article
       key="reader"
       ref={scope}
-      initial={READER.closed}
-      animate={READER.open}
+      initial={READER.initial}
+      animate={READER.animate}
       onClick={handleClose}
       className="reader link">
-        <motion.section className="read-box" initial={{top: "-100%"}} animate={{top: "50%"}} onClick={e => e.stopPropagation()}>
+        <motion.section className="read-box"  initial={{top: "-100%"}} animate={{top: "50%"}} onClick={e => e.stopPropagation()}>
           <post.article/>
         </motion.section>
     </motion.article>
