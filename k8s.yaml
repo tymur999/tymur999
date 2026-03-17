@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: &metadata
+  name: blog
+  labels: &label
+    app: blog
+spec:
+  selector:
+    matchLabels: *label
+  template:
+    metadata: *metadata
+    spec:
+      containers:
+        - name: nginx
+          image: gitea.tymur999.com/tymur999/blog:latest
+          ports:
+            - containerPort: 8000
+              name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  labels: &labels
+    app: blog
+spec:
+  selector: *labels
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: http
+      name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blog
+  labels:
+    app: blog
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - tymur999.com
+  rules:
+    - host: tymur999.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog
+                port:
+                  name: http
