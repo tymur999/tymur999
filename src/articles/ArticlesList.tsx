@@ -21,7 +21,6 @@ export function ArticlesList() {
 
 function BlogBox(props: { article: Article }) {
   const {article, article: {name, description, thumbnail, published} } = props;
-
   const [, setReading] = useArticle();
 
   return (
@@ -29,15 +28,20 @@ function BlogBox(props: { article: Article }) {
       <div>
         <img className="thumbnail" alt={`${name} thumbnail`} src={thumbnail}/>
         <div className="titles">
-          <h1>{name}</h1>
+          <h1>
+              { name }
+          </h1>
           <div className="desc">
-            <h3>{description}</h3>
-            <p>{published.toDateString()}</p>
+            <h3>
+              { description }
+            </h3>
+            <p>
+              { published.toDateString() }
+            </p>
           </div>
         </div>
       </div>
       <BoxSvg className='box-wave'/>
     </button>
-
   )
 }
