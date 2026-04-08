@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "NODE_ENV=development webpack serve -c webpack.config.ts",
     "build": "NODE_ENV=production webpack -c webpack.config.ts",
+    "deploy": "gh-pages -d build",
     "serve": "serve -s build"
   },
   "browserslist": {
