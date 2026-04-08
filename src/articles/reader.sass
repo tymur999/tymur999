@@ -1,36 +1,34 @@
 @use "../nav/nav"
 @use "../about/about"
-
-article
-  font-family: Neuton, serif
-  p
-    font-size: large
-  section
-    margin: 0 100px
-    padding: nav.$padding
-
+@use "../index"
 
 .reader
-  font-family: Neuton, serif
-  border: 2px solid black
-  overflow: scroll
   z-index: 9999
-  width: 100vw
-  min-height: 100vh
+  font-family: Neuton, serif
   background: rgba(0,0,0,0.5)
+  width: 100vw
+  height: 100vh
+  position: fixed
+  top: 0
+  left: 0
 
-  &, > section
-    position: fixed
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+  p
+    font-size: large
 
+  display: flex
 
-  > section
+  > article
+    display: flex
+    flex-direction: column
+    align-items: center
+    border-radius: 15px
+    margin: auto
+    padding: 15px
+    overflow-y: scroll
     background: white
     color: black
-    min-height: 75vh
-    width: 800px
+    height: 90vh
+    max-width: 600px
 
 .external-link
   color: inherit !important
@@ -41,6 +39,5 @@ article
   flex-direction: row
   justify-content: center
 
-
 .row>*
-  width: 33%
+  width: 50%

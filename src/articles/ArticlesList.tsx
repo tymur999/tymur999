@@ -1,7 +1,6 @@
 import {useArticle} from "./ArticleContext";
 import "./list.sass";
 import {ReactComponent as BoxSvg} from "../img/blog-box.svg";
-import {Reader} from "./Reader";
 import {Article, ARTICLES} from "./articles";
 
 
@@ -16,7 +15,6 @@ export function ArticlesList() {
       }
     </section>
     <section className="spacer"/>
-    <Reader/>
   </main>
 }
 
@@ -26,7 +24,7 @@ function BlogBox(props: { article: Article }) {
 
   return (
     <button className="link" onClick={() => setReading(article)}>
-      <div>
+      <div className="blog-box">
         <img className="thumbnail" alt={`${name} thumbnail`} src={thumbnail}/>
         <div className="titles">
           <h1>

@@ -1,9 +1,15 @@
 @use "../nav/nav"
+@use "../index"
 $entry-width: 400px
+.blog-box
+  display: flex
+  flex-direction: column
+
+  .thumbnail
+    height: 400px
 
 .thumbnail
-  width: $entry-width
-  height: 400px
+  max-width: $entry-width
   object-fit: cover
   object-position: 0 0
 
@@ -12,10 +18,13 @@ $entry-width: 400px
   width: 33%
   flex-grow: 1
 
+@media screen and (max-width: index.$phone)
+  .spacer
+    display: none
+
 .titles
   font-family: Neuton, serif
   margin: 10px
-  gap: 15px
   display: flex
   align-items: center
 
