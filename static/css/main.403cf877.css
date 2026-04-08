@@ -1,0 +1,92 @@
+html,body{margin:0;padding:0;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}#root{display:flex;flex-direction:column;min-height:100vh;background:#000;color:#fff}img{user-select:none;pointer-events:none}button{background:none;border:none;padding:0;color:#fff;cursor:pointer}
+/* inter-cyrillic-ext-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-cyrillic-ext-400-normal.39fbf8d2c4abc46f721f.woff2) format('woff2'), url(/static/media/inter-cyrillic-ext-400-normal.818b84180553acc613f3.woff) format('woff');
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+/* inter-cyrillic-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-cyrillic-400-normal.89455522650c3fb3654c.woff2) format('woff2'), url(/static/media/inter-cyrillic-400-normal.dd21c71421d58232ef03.woff) format('woff');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+
+/* inter-greek-ext-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-greek-ext-400-normal.f2ef63e732b18d636044.woff2) format('woff2'), url(/static/media/inter-greek-ext-400-normal.fc80974ec6969ee03fd2.woff) format('woff');
+  unicode-range: U+1F00-1FFF;
+}
+
+/* inter-greek-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-greek-400-normal.e685387f69602567b1da.woff2) format('woff2'), url(/static/media/inter-greek-400-normal.b412faded087fbcfa4ff.woff) format('woff');
+  unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;
+}
+
+/* inter-vietnamese-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-vietnamese-400-normal.44c9df135eec470b0ab6.woff2) format('woff2'), url(/static/media/inter-vietnamese-400-normal.aaa15d735e3826061950.woff) format('woff');
+  unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+/* inter-latin-ext-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-latin-ext-400-normal.210fb826cb25acbd4094.woff2) format('woff2'), url(/static/media/inter-latin-ext-400-normal.c616205185f0d3677df9.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* inter-latin-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/inter-latin-400-normal.eca1e21531598d5db58f.woff2) format('woff2'), url(/static/media/inter-latin-400-normal.2ea1079c0069eb040a52.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+/* neuton-latin-ext-400-normal */
+@font-face {
+  font-family: 'Neuton';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/neuton-latin-ext-400-normal.d0a3b009154b1b0b4a0e.woff2) format('woff2'), url(/static/media/neuton-latin-ext-400-normal.459ff865df297b1a1629.woff) format('woff');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* neuton-latin-400-normal */
+@font-face {
+  font-family: 'Neuton';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/static/media/neuton-latin-400-normal.e6246899e071397806fd.woff2) format('woff2'), url(/static/media/neuton-latin-400-normal.d2979bc99e9014c7101c.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+html,body{margin:0;padding:0;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}#root{display:flex;flex-direction:column;min-height:100vh;background:#000;color:#fff}img{user-select:none;pointer-events:none}button{background:none;border:none;padding:0;color:#fff;cursor:pointer}.menu-btn{align-self:center;display:flex;flex-direction:column;align-items:center;font-size:30px}@media screen and (max-width: 750px){.menu-btn{display:none;position:absolute}.links{justify-content:center}}nav{background-color:#282c34;padding:15px;display:flex;align-items:center;justify-content:center}nav .name{position:absolute;left:50%;transform:translateX(-50%)}nav .name h1{margin:auto 0;font-size:40px}.links{flex-grow:1;justify-content:flex-end;align-items:center;display:flex;flex-wrap:wrap;gap:15px}.wave{user-select:none;pointer-events:none;position:absolute}article{padding:0 15px}article img{width:500px}article h1{font-size:30px}article p{font-size:20px}.art-ctr{display:flex;flex-direction:row;min-height:100vh}.art-ctr button{display:flex;flex-direction:column;max-width:400px;margin:30px}.art-ctr button>div{background:#282c34}.art-ctr button{color:#fff;padding:0}.thumbnail{width:400px;height:400px;object-fit:cover;object-position:0 0}.spacer{background:#393984;width:33%;flex-grow:1}.titles{font-family:Neuton,serif;margin:10px;gap:15px;display:flex;align-items:center}.titles>h1{flex-grow:3;text-align:left}.titles>div{flex-grow:1;text-align:center}.titles h4{color:gray}.articles{display:flex;flex-grow:4;margin-top:100px;flex-direction:column;align-items:center;flex-wrap:wrap}.reader{font-family:Neuton,serif;border:2px solid #000}.reader,.reader>section{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%)}.reader{overflow:scroll;z-index:9999;width:100vw;min-height:100vh;background:rgba(0,0,0,.5)}.reader>section{margin-top:15px;background:#fff;color:#000;min-width:50vw;max-width:800px;min-height:75vh}.reader>section h1{font-size:xxx-large}
+
+/*# sourceMappingURL=main.403cf877.css.map*/
