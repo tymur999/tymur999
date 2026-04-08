@@ -1,7 +1,8 @@
-import {Article, ARTICLES, useArticle} from "./ArticleContext";
+import {useArticle} from "./ArticleContext";
 import "./list.sass";
 import {ReactComponent as BoxSvg} from "../img/blog-box.svg";
 import {Reader} from "./Reader";
+import {Article, ARTICLES} from "./articles";
 
 
 export function ArticlesList() {
@@ -10,7 +11,7 @@ export function ArticlesList() {
     <section className="articles">
       {
         ARTICLES.map(a =>
-          <BlogBox key={a.name} article={a}/>
+          <BlogBox key={a.name} article={a} />
         )
       }
     </section>

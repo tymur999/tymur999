@@ -1,0 +1,46 @@
+@use "../nav/nav"
+@use "../about/about"
+
+article
+  font-family: Neuton, serif
+  p
+    font-size: large
+  section
+    margin: 0 100px
+    padding: nav.$padding
+
+
+.reader
+  font-family: Neuton, serif
+  border: 2px solid black
+  overflow: scroll
+  z-index: 9999
+  width: 100vw
+  min-height: 100vh
+  background: rgba(0,0,0,0.5)
+
+  &, > section
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+
+  > section
+    background: white
+    color: black
+    min-height: 75vh
+    width: 800px
+
+.external-link
+  color: inherit !important
+
+.row
+  margin: 30px 0
+  display: flex
+  flex-direction: row
+  justify-content: center
+
+
+.row>*
+  width: 33%

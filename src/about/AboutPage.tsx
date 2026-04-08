@@ -1,7 +1,6 @@
 import "./about.sass";
-import {HTMLProps, lazy} from "react";
-import {Link} from "../router/Link";
-import {Path} from "../router/router";
+import {lazy} from "react";
+import {ExternalLink} from "../router/Link";
 
 const About = lazy(() => import("./About.mdx"));
 
@@ -15,10 +14,4 @@ export default function AboutPage() {
     </section>
     <div className="edge"/>
   </main>
-}
-
-function ExternalLink(props: HTMLProps<HTMLAnchorElement>) {
-  return (
-    <Link {...props} href={props.href as Path} className="external-link" target="_blank">{props.children}</Link>
-  )
 }

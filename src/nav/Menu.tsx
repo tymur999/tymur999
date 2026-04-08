@@ -1,7 +1,8 @@
 import "./menu.sass";
 import {animate, motion} from "framer-motion";
 import {useEffect} from "react";
-import {ARTICLES, useArticle} from "../articles/ArticleContext";
+import {useArticle} from "../articles/ArticleContext";
+import {ARTICLES} from "../articles/articles";
 
 
 const hidden = -999;

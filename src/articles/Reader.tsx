@@ -1,12 +1,13 @@
 import {useArticle} from "./ArticleContext";
 import {motion} from "framer-motion";
-import {useAnimate, animate as animateClass} from "motion/react";
+import {animate as animateClass, useAnimate} from "motion/react";
 import {useEffect} from "react";
 import {AnimateDirection, AnimateFade, AnimateTemplate} from "../animations";
+import "./reader.sass";
+import {ExternalLink} from "../router/Link";
 
 const READER : AnimateTemplate = AnimateFade();
 const ARTICLE : AnimateTemplate = AnimateDirection("top", "50%");
-
 
 export function Reader() {
   const [ scope, animate ] = useAnimate<HTMLElement>();
@@ -30,11 +31,11 @@ export function Reader() {
 
   function handleClose() {
     Promise.all([
-      animate(scope.current, READER.initial),
-      animateClass(".read-box", ARTICLE.initial!)
-    ]).then(() => setPost(undefined));
+        animate(scope.current, READER.initial),
+        animateClass(".reader > section", ARTICLE.initial)
+      ]
+    ).then(() => setPost(undefined));
   }
-
 
   return post ? (
     <motion.article
@@ -44,8 +45,10 @@ export function Reader() {
       animate={READER.animate}
       onClick={handleClose}
       className="reader link">
-        <motion.section className="read-box"  initial={{top: "-100%"}} animate={{top: "50%"}} onClick={e => e.stopPropagation()}>
-          <post.article/>
+        <motion.section initial={{top: "-100%"}} animate={{top: "50%"}} onClick={e => e.stopPropagation()}>
+          <post.article components={{
+           'a': ExternalLink
+          }}/>
         </motion.section>
     </motion.article>
   ) : <></>;

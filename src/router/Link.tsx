@@ -27,3 +27,9 @@ export function Link(props: {href: Path, children : ReactNode, target?: '_blank'
     {children}
    </a>
 }
+
+export function ExternalLink(props: HTMLProps<HTMLAnchorElement>) {
+  return (
+    <Link {...props} href={props.href as Path} className="external-link" target="_blank">{props.children}</Link>
+  )
+}

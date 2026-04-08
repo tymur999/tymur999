@@ -1,30 +1,6 @@
 @use "../nav/nav"
 $entry-width: 400px
 
-article
-  padding: 0 nav.$padding
-  img
-    width: 500px
-  h1
-    font-size: 30px
-  p
-    font-size: 20px
-
-.art-ctr
-  display: flex
-  flex-direction: row
-  min-height: 100vh
-
-  button
-    display: flex
-    flex-direction: column
-    max-width: $entry-width
-    margin: nav.$padding * 2
-    &>div
-      background: #282c34
-    color: white
-    padding: 0
-
 .thumbnail
   width: $entry-width
   height: 400px
@@ -62,26 +38,26 @@ article
   align-items: center
   flex-wrap: wrap
 
-.reader
-  font-family: Neuton, serif
-  border: 2px solid black
-  &, > section
-    position: fixed
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-
-  overflow: scroll
-  z-index: 9999
-  width: 100vw
+.art-ctr
+  display: flex
+  flex-direction: row
   min-height: 100vh
-  background: rgba(0,0,0,0.5)
-  > section
-    margin-top: nav.$padding
-    background: white
-    color: black
-    min-width: 50vw
-    max-width: 800px
-    min-height: 75vh
-    h1
-      font-size: xxx-large
+
+  ul
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-items: center
+
+    li
+      font-size: 20px
+
+  button
+    display: flex
+    flex-direction: column
+    max-width: $entry-width
+    margin: nav.$padding * 2
+    &>div
+      background: #282c34
+    color: white
+    padding: 0
