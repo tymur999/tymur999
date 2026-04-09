@@ -1,7 +1,6 @@
 import React, {PropsWithChildren} from "react";
 import {useRouter} from "./RouterContext";
 import {Path} from "./router";
-import {ArticlesList} from "../articles/ArticlesList";
 
 type Route = [Path, string];
 type Routes = [Route, Route, Route];
@@ -21,7 +20,7 @@ function Route(props: PropsWithChildren & {route: Route}) {
 
 const Canvas = React.lazy(() => import("../index/Canvas"));
 const About = React.lazy(() => import("../about/AboutPage"));
-
+const ArticlesList = React.lazy(() => import("../articles/ArticlesList"));
 
 export function Routes() {
   const [index, about, articles] = ROUTES;
