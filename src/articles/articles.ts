@@ -1,7 +1,7 @@
 import {Path} from "../router/router";
 import {MDXContent} from "mdx/types";
 import {lazy, LazyExoticComponent} from "react";
-import allBlack from "../img/IMG_3095.jpg";
+import allBlack from "../img/IMG_3095.webp";
 
 export interface Article {
   name: string,

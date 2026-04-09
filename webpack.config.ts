@@ -36,7 +36,7 @@ const config: webpack.Configuration = {
         oneOf: [
           // Image assets
           {
-            test: [/\.(avif|bmp|.gif|jpe?g|png|pdf)$/],
+            test: [/\.(avif|bmp|.gif|webp|jpe?g|png|pdf)$/],
             type: "asset",
             parser: {
               dataUrlCondition: {
