@@ -1,10 +1,15 @@
 import "./canvas.sass";
 import {motion} from "framer-motion";
-import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
-import {Vector3} from "three";
+import {Canvas as ThreeCanvas} from "@react-three/fiber";
 import {Moon} from "./Moon";
-import {Stars} from "./Stars";
 import {AnimateSpin} from "../animations";
+import {Environment, OrbitControls, useTexture} from "@react-three/drei";
+import Jupiter from "../img/2k_jupiter.jpg";
+import Makemake from "../img/2k_makemake_fictional.jpg";
+import Ceres from "../img/2k_ceres_fictional.jpg";
+import Haumea from "../img/2k_haumea_fictional.jpg";
+import MilkyWay from "../img/2k_stars_milky_way.jpg";
+import {Suspense} from "react";
 
 export default function Canvas() {
 
@@ -12,12 +17,13 @@ export default function Canvas() {
     <main className="canvas">
       <section className="canvas-ctr">
         <ThreeCanvas shadows>
-          <Sphere/>
-          <Moon radius={8} color="pink" step={0.01}/>
-          <Moon radius={6} color="grey" step={0.02}/>
-          <Moon radius={4} color="green" step={0.03}/>
-          <Stars/>
-          <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
+          <Suspense fallback={null}>
+            <OrbitControls />
+            <Environment background={true} files={MilkyWay}/>
+            <Moons/>
+            <Sphere/>
+            <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
+          </Suspense>
         </ThreeCanvas>
       </section>
       <motion.h1 className="welcome" animate={AnimateSpin().animate}>
@@ -27,18 +33,23 @@ export default function Canvas() {
   )
 }
 
+function Moons() {
+  const makemake = useTexture(Makemake);
+  const haumea = useTexture(Haumea);
+  const ceres = useTexture(Ceres);
+
+  return <>
+    <Moon radius={8} color="pink" map={makemake} step={0.01}/>
+    <Moon radius={6} color="grey" map={haumea} step={0.02}/>
+    <Moon radius={4} color="green" map={ceres} step={0.03}/>
+  </>
+}
+
 function Sphere() {
-  useFrame(state => {
-    const { x, y } = state.pointer
-    // Smoothly interpolate the camera position
-    // We multiply by a factor (e.g., 5) to increase the range of movement
-    state.camera.position.lerp(new Vector3(x * 10, y * 10, 5), 0.1)
-    // Always keep the camera looking at the center
-    state.camera.lookAt(0, 0, 0)
-  })
+  const colorMap = useTexture(Jupiter);
 
   return <mesh position={[0,0,0]}>
     <sphereGeometry />
-    <meshPhysicalMaterial color="blue" iridescence={.5} />
+    <meshPhysicalMaterial map={colorMap} color="orange" iridescence={1} />
   </mesh>
 }
