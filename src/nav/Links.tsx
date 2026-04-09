@@ -2,6 +2,7 @@ import {Link} from "../router/Link";
 import {ROUTES} from "../router/Route";
 import ResumePdf from "../img/resume.pdf";
 import {motion} from "motion/react";
+import {Path} from "../router/router";
 
 export function Links() {
 
@@ -18,6 +19,9 @@ export function Links() {
     }
     <Link key={ResumePdf} href={ResumePdf} target="_blank">
       <h3>Resume</h3>
+    </Link>
+    <Link key="Github" href={"https://github.com/tymur999" as Path} target="_blank">
+      <h3>GitHub</h3>
     </Link>
   </div>
 }
