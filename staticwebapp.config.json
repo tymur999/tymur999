@@ -6,6 +6,10 @@
         "get"
       ],
       "rewrite": "/"
+    },
+    {
+      "route": "/about",
+      "rewrite": "/"
     }
   ]
 }
