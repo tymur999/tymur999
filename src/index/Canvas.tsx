@@ -9,7 +9,6 @@ import Makemake from "../img/2k_makemake_fictional.jpg";
 import Ceres from "../img/2k_ceres_fictional.jpg";
 import Haumea from "../img/2k_haumea_fictional.jpg";
 import MilkyWay from "../img/2k_stars_milky_way.jpg";
-import {Suspense} from "react";
 
 export default function Canvas() {
 
@@ -17,18 +16,19 @@ export default function Canvas() {
     <main className="canvas">
       <section className="canvas-ctr">
         <ThreeCanvas shadows>
-          <Suspense fallback={null}>
-            <OrbitControls />
-            <Environment background={true} files={MilkyWay}/>
-            <Moons/>
-            <Sphere/>
-            <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
-          </Suspense>
+          <OrbitControls enableZoom={false} />
+          <Environment background files={MilkyWay}/>
+          <Moons/>
+          <Planet/>
+          <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
         </ThreeCanvas>
       </section>
       <motion.h1 className="welcome" animate={AnimateSpin().animate}>
         Welcome to my blog
       </motion.h1>
+      <h3 className="tooltip">
+        Drag to orbit
+      </h3>
     </main>
   )
 }
@@ -45,7 +45,7 @@ function Moons() {
   </>
 }
 
-function Sphere() {
+function Planet() {
   const colorMap = useTexture(Jupiter);
 
   return <mesh position={[0,0,0]}>
