@@ -3,6 +3,10 @@
     {
       "route": "/about",
       "rewrite": "/"
+    },
+    {
+      "route": "/articles",
+      "redirect": "/"
     }
   ]
 }
