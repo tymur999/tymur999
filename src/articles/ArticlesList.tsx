@@ -2,12 +2,10 @@ import {useArticle} from "./ArticleContext";
 import "./list.sass";
 import {ReactComponent as BoxSvg} from "../img/blog-box.svg";
 import {Article, ARTICLES} from "./articles";
-import {motion} from "motion/react";
-import {AnimateFade} from "../animations";
 
-const main = AnimateFade();
-export default function ArticlesList() {
-  return <motion.main animate={main.animate} initial={main.initial} className="art-ctr">
+
+export function ArticlesList() {
+  return <main className="art-ctr">
     <section className="spacer"/>
     <section className="articles">
       {
@@ -17,7 +15,7 @@ export default function ArticlesList() {
       }
     </section>
     <section className="spacer"/>
-  </motion.main>
+  </main>
 }
 
 function BlogBox(props: { article: Article }) {
