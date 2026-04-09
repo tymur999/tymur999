@@ -5,22 +5,18 @@ import {ReactComponent as Wave} from "../img/menu-wave.svg";
 import "./nav.sass";
 import {Links} from "./Links";
 import {Menu} from "./Menu";
-import {motion} from "motion/react";
-import {AnimateFade} from "../animations";
-
-const nav = AnimateFade();
 
 export default function Nav() {
     const [active, setActive] = useState(false);
 
-    return <motion.div initial={nav.initial} animate={nav.animate}>
+    return <div>
         <nav>
           <MenuButton active={active} setActive={setActive}/>
           <Links/>
         </nav>
         <Wave className="wave" />
         <Menu active={active}/>
-    </motion.div>;
+    </div>;
 }
 
 function MenuButton(props : { active: boolean, setActive: (_:boolean) => void }) {
