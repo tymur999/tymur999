@@ -2,7 +2,7 @@ import "./canvas.sass";
 import {motion} from "framer-motion";
 import {Canvas as ThreeCanvas} from "@react-three/fiber";
 import {Moon} from "./Moon";
-import {AnimateSpin} from "../animations";
+import {AnimateFade, AnimateSpin} from "../animations";
 import {Environment, OrbitControls, useTexture} from "@react-three/drei";
 import Jupiter from "../img/2k_jupiter.jpg";
 import Makemake from "../img/2k_makemake_fictional.jpg";
@@ -10,10 +10,12 @@ import Ceres from "../img/2k_ceres_fictional.jpg";
 import Haumea from "../img/2k_haumea_fictional.jpg";
 import MilkyWay from "../img/2k_stars_milky_way.jpg";
 
+const main = AnimateFade();
 export default function Canvas() {
 
+  // fade animation sync with loading
   return (
-    <main className="canvas">
+    <motion.main initial={main.initial} animate={main.animate} transition={{duration: 3}} className="canvas">
       <section className="canvas-ctr">
         <ThreeCanvas shadows>
           <OrbitControls enableZoom={false} />
@@ -29,7 +31,7 @@ export default function Canvas() {
       <h3 className="tooltip">
         Drag to orbit
       </h3>
-    </main>
+    </motion.main>
   )
 }
 
