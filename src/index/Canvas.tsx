@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {Canvas as ThreeCanvas} from "@react-three/fiber";
 import {Moon} from "./Moon";
 import {AnimateFade, AnimateSpin} from "../animations";
-import {Environment, OrbitControls, useTexture} from "@react-three/drei";
+import {Environment, OrbitControls, Preload, useTexture} from "@react-three/drei";
 import Jupiter from "../img/2k_jupiter.jpg";
 import Makemake from "../img/2k_makemake_fictional.jpg";
 import Ceres from "../img/2k_ceres_fictional.jpg";
@@ -23,6 +23,7 @@ export default function Canvas() {
           <Moons/>
           <Planet/>
           <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
+          <Preload all />
         </ThreeCanvas>
       </section>
       <motion.h1 className="welcome" animate={AnimateSpin().animate}>
