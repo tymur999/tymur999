@@ -1,13 +1,6 @@
 {
   "routes": [
     {
-      "route": "*",
-      "methods": [
-        "get"
-      ],
-      "rewrite": "/"
-    },
-    {
       "route": "/about",
       "rewrite": "/"
     }
