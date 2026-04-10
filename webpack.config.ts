@@ -4,7 +4,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import {WebpackManifestPlugin} from "webpack-manifest-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import {Options as MDXOptions} from '@mdx-js/loader';
 import "webpack-dev-server";
@@ -141,10 +140,6 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: path.resolve(import.meta.dirname, "public/index.html"),
       inject: true,
-    }),
-    new WebpackManifestPlugin({
-      fileName: "manifest.json",
-      publicPath: "/"
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),
