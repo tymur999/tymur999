@@ -14,6 +14,8 @@ import {useRef} from "react";
 import type {Mesh} from "three";
 import * as THREE from "three";
 
+useTexture.preload([Jupiter, Makemake, Ceres, Haumea, MilkyWay, SaturnRings]);
+
 export default function Canvas() {
 
   // fade animation sync with loading

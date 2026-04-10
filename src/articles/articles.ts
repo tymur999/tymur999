@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     name: "My high school experience",
     description: "My first program, winning two senior superlatives, and why (and how) I chose Georgia Tech",
     thumbnail: allBlack,
-    published: new Date(Date.parse("3/15/2026")),
+    published: new Date("3/15/2026"),
     article: lazy(() => import("./mdx/high-school.mdx"))
   }
 ]
