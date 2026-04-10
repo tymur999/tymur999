@@ -4,10 +4,10 @@ import {Canvas as ThreeCanvas} from "@react-three/fiber";
 import {Moon} from "./Moon";
 import {AnimateFade, AnimateSpin} from "../animations";
 import {Environment, OrbitControls, Preload, useTexture} from "@react-three/drei";
-import Jupiter from "../img/2k_jupiter.jpg";
-import Makemake from "../img/2k_makemake_fictional.jpg";
-import Ceres from "../img/2k_ceres_fictional.jpg";
-import Haumea from "../img/2k_haumea_fictional.jpg";
+import Jupiter from "../img/2k_jupiter.webp";
+import Makemake from "../img/2k_makemake_fictional.webp";
+import Ceres from "../img/2k_ceres_fictional.webp";
+import Haumea from "../img/2k_haumea_fictional.webp";
 import MilkyWay from "../img/2k_stars_milky_way.jpg";
 
 const main = AnimateFade();
