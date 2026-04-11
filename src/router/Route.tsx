@@ -13,8 +13,10 @@ export const ROUTES: Routes = [
 function Route(props: PropsWithChildren & {route: Route}) {
   const {route: [path], children} = props;
   const router = useRouter();
+  // remove search params
+  const [cleanPath] = /\/?\w*[^?]/.exec(router.current) ?? [path];
 
-  return <>{router.current === path && children}</>
+  return <>{cleanPath === path && children}</>
 }
 
 
