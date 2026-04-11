@@ -22,15 +22,12 @@ export function Reader() {
   }, []);
 
   function handleClose() {
-    Promise.all([
-        animate(".reader", READER.initial)
-      ]
-    ).then(() => setPost(undefined));
+    animate(".reader", READER.initial)
+      .then(() => setPost(undefined));
   }
 
   return post ? (
     <motion.section
-      key="reader"
       initial={READER.initial}
       animate={READER.animate}
       onClick={handleClose}
@@ -39,9 +36,11 @@ export function Reader() {
           <button onClick={handleClose} className="link reader-close">
             <FontAwesomeIcon icon={faClose} />
           </button>
-          <post.article components={{
-           'a': ExternalLink
-          }}/>
+          <div className="content">
+            <post.article components={{
+              'a': ExternalLink
+            }}/>
+          </div>
         </article>
     </motion.section>
   ) : <></>;

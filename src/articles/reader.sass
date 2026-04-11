@@ -12,16 +12,9 @@
   top: 0
   left: 0
 
-  h1
-    font-size: xxx-large
-  h2
-    font-size: xx-large
-  h3
-    font-size: x-large
-  p
-    font-size: large
-
   display: flex
+  justify-content: center
+  align-items: center
 
   > article
     display: flex
@@ -35,7 +28,21 @@
     background: white
     color: black
     height: 90vh
-    max-width: 600px
+
+    @media screen and (min-width: index.$phone)
+      width: 800px
+
+    h1
+      font-size: xxx-large
+    h2
+      font-size: xx-large
+    h3
+      font-size: x-large
+    p
+      font-size: large
+
+.content
+  max-width: 600px
 
 .external-link
   color: inherit !important
