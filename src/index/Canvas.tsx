@@ -2,8 +2,7 @@ import "./canvas.sass";
 import {motion} from "framer-motion";
 import {Canvas as ThreeCanvas, useFrame} from "@react-three/fiber";
 import {Moon} from "./Moon";
-import {AnimateSpin} from "../animations";
-import {BakeShadows, Environment, OrbitControls, Preload, useTexture} from "@react-three/drei";
+import {BakeShadows, Environment, Html, OrbitControls, Preload, useTexture} from "@react-three/drei";
 import Jupiter from "../img/2k_jupiter.webp";
 import Makemake from "../img/2k_makemake_fictional.webp";
 import Ceres from "../img/2k_ceres_fictional.webp";
@@ -17,26 +16,27 @@ import * as THREE from "three";
 useTexture.preload([Jupiter, Makemake, Ceres, Haumea, MilkyWay, SaturnRings]);
 
 export default function Canvas() {
-
   // fade animation sync with loading
   return (
     <motion.main className="canvas">
       <section className="canvas-ctr">
-        <ThreeCanvas camera={{position: [3,3,3]}} shadows dpr={[1, 2]}>
+        <ThreeCanvas camera={{position: [0,0,10]}} shadows dpr={[1, 2]}>
           <OrbitControls enablePan={false} enableZoom={false} />
           <BakeShadows/>
           <Environment background files={MilkyWay}/>
           <Moons/>
           <Planet/>
           <Rings/>
+          <Html center transform position={[0,0,2]}>
+            <h1 className="welcome">
+              Welcome to my blog
+            </h1>
+          </Html>
           <ambientLight args={[1,1]} />
           <directionalLight color="#E3A857" args={[1,10]} position={[100,10,100]} />
           <Preload all />
         </ThreeCanvas>
       </section>
-      <motion.h1 className="welcome" animate={AnimateSpin().animate}>
-        Welcome to my blog
-      </motion.h1>
       <h3 className="tooltip">
         Drag to orbit
       </h3>
@@ -61,7 +61,7 @@ function Rings() {
   
   // To avoid seeing the backside as invisible, use DoubleSide.
   // We should also use a RingGeometry rather than a CircleGeometry so it is empty in the center.
-  return <mesh position={[0,0,0]} rotation={[-Math.PI / 2, 0, 0]}>
+  return <mesh rotation={[-Math.PI / 2, 0, 0]}>
     <ringGeometry args={[1.2, 1.7, 64]} />
     <meshPhysicalMaterial map={map}  transparent={true} side={THREE.DoubleSide} iridescence={1}/>
   </mesh>
