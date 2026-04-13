@@ -45,7 +45,7 @@ export default function Canvas() {
   )
 }
 
-function Sun() {
+export function Sun() {
   return (
     <mesh position={[-100, 0, -100]}>
       <sphereGeometry args={[5, 32, 32]} />
