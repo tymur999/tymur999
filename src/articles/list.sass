@@ -1,6 +1,11 @@
 @use "../nav/nav"
 @use "../index"
 $entry-width: 400px
+
+canvas
+  width: 100vw
+  height: calc(100vh - 100px)
+
 .blog-box
   display: flex
   flex-direction: column
@@ -39,6 +44,7 @@ $entry-width: 400px
     color: grey
 
 .articles
+  z-index: -999
   display: flex
   flex-grow: 3
   justify-content: center

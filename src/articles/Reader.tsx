@@ -1,4 +1,3 @@
-import {useArticle} from "./ArticleContext";
 import {animate, motion} from "framer-motion";
 import {useEffect} from "react";
 import {AnimateFade, AnimateTemplate} from "../animations";
@@ -6,11 +5,11 @@ import "./reader.sass";
 import {ExternalLink} from "../router/Link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose} from "@fortawesome/free-solid-svg-icons/faClose";
+import {Article} from "./articles";
 
 const READER : AnimateTemplate = AnimateFade();
 
-export function Reader() {
-  const [post, setPost] = useArticle();
+export function Reader({post, setPost}: {post: Article | null, setPost: (_: Article | null) => void}) {
 
   useEffect(() => {
     function pressEscape(e: KeyboardEvent) {
@@ -23,7 +22,7 @@ export function Reader() {
 
   function handleClose() {
     animate(".reader", READER.initial)
-      .then(() => setPost(undefined));
+      .then(() => setPost(null));
   }
 
   return post ? (
